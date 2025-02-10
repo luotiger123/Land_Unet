@@ -1,3 +1,6 @@
+# This script can be used to transformer your json_labeme to Mask(.PNG)
+# Please check the annoation classes first
+
 import base64
 import json
 import os

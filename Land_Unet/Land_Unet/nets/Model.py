@@ -46,10 +46,8 @@ def plot_and_save_feature_maps(feature_maps, save_dir='feature_maps'):
             plt.close(fig)  # Close the figure to free memory
 
 
-# savepath = r'features_whitegirl'
-# if not os.path.exists(savepath):
-#     os.mkdir(savepath)
-# 确保正确导入SCSA
+
+
 class SCSA(BaseModule):
     # SCSA类的初始化和方法定义见上方代码
 
@@ -175,25 +173,6 @@ class SCSA(BaseModule):
         attn = self.ca_gate(attn)
         return attn * x
 
-
-# 使用示例
-# if __name__ == "__main__":
-#     scsa = SCSA(dim=256, head_num=4)
-#     x = torch.randn(1, 256, 64, 64)  # 生成随机输入
-#
-#     if torch.cuda.is_available():
-#         x = x.cuda()
-#         scsa = scsa.cuda()
-#
-#     y = scsa(x)  # 计算输出
-#     print("输出维度为", y.shape)
-#
-#     flops, params = profile(scsa, inputs=(x,))  # 计算 FLOPs
-#     print(f"Total FLOPs: {flops / (10 ** 9):.2f} GFLOPs")
-#
-#     total_num = sum(p.numel() for p in scsa.parameters())
-#     trainable_num = sum(p.numel() for p in scsa.parameters() if p.requires_grad)
-#     print("总参数量为", total_num / 1000000, "M")
 
 def normal_init(module, mean=0, std=1, bias=0):
     if hasattr(module, 'weight') and module.weight is not None:
